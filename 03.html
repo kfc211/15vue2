@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue2.6.10.js"></script>
+    <style type="text/css">
+        .mybutton{width: 100px; height: 35px; border: 1px solid blue; background: white}
+        button:hover{color: white;background: blue;}
+    </style>
+</head>
+<body>
+<div id="demo3">
+    <my-button ></my-button>
+</div>
+<script>
+    var myButton = {
+        template:'<div><button @click="handleClick" class="mybutton">{{msg}}</button></div>',
+
+        data(){
+          return{
+              msg:'hello'
+          }
+        },
+        methods:{
+
+            handleClick(){
+                alert(this.msg)
+
+            }
+
+        }
+
+    }
+    new Vue({
+        el:'#demo3',
+        components:{
+            'my-button':myButton
+        },
+    })
+</script>
+</body>
+</html>

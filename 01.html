@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue2.6.10.js"></script>
+</head>
+<body>
+<div id="demo1">
+    <demo-num></demo-num>
+</div>
+<script>
+    var DemoNum={
+        template:'<div><input @click="desClick" type="button" value="-"><input v-model="count" type="text"><input @click="addClick" type="button" value="+"></div>',
+
+        data(){
+            return{
+                count:1
+            }
+        },
+        methods:{
+            addClick(){
+                this.count++;
+            },
+            desClick(){
+                if(this.count==1){
+                    alert("数量为1，不能再减")
+                }
+                else {
+                    this.count--;
+                }
+            }
+        },
+        watch:{
+            count(){
+                var isnum=new RegExp(/^[0-9]*$/)
+                if(!isnum.test(this.count)&this.count<0){
+                    alert("输入数据不合法，同时文本框数据变为1，且文本框获得焦点")
+                    this.count=1;
+                }
+                else{
+                    this.count=this.count
+                }
+            }
+        }
+    }
+    new Vue({
+        el:'#demo1',
+        components:{
+            'demo-num':DemoNum
+        }
+    })
+</script>
+</body>
+</html>

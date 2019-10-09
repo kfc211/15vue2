@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue2.6.10.js"></script>
+</head>
+<body>
+<div id="demo2">
+    <input type="button" @click="a='aaa'" value="选项卡1">
+    <input type="button" @click="a='bbb'" value="选项卡2">
+    <components :is="a"></components>
+</div>
+<script>
+    new Vue({
+        el:'#demo2',
+        data:{
+            a:'aaa'
+        },
+        components:{
+            'aaa':{
+                template:'<h2>aaa</h2>'
+            },
+            'bbb':{
+                template:'<h2>bbb</h2>'
+            }
+        }
+    })
+
+</script>
+</body>
+</html>
